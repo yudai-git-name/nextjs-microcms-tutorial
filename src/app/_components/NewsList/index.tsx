@@ -20,13 +20,23 @@ export default function NewsList({ news }: Props) {
         <li key={article.id} className={styles.list}>
           <Link href={`/news/${article.id}`} className={styles.link}>
             <div>
-              <Image
-                className={styles.image}
-                src={'/no-image.png'}
-                width={1200}
-                height={630}
-                alt=""
-              />
+              {article.thumbnail ? (
+                <Image
+                  src={article.thumbnail.url}
+                  alt=""
+                  className={styles.image}
+                  width={article.thumbnail.width}
+                  height={article.thumbnail.height}
+                />
+              ) : (
+                <Image
+                  src={'/no-image.png'}
+                  alt=""
+                  className={styles.image}
+                  width={1200}
+                  height={630}
+                />
+              )}
             </div>
             <dl className={styles.content}>
               <dt className={styles.title}>{article.title}</dt>
